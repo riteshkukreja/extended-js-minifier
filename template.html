@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="Minifier-Extended.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+
+	<div class="container" data-loader="2">
+		<div class="sidebar"></div>
+		<div class="main">
+			<div class="content">
+				<div class="search">
+					<input type="text" name="search" placeholder="Search Modules">
+					<span class="icon"></span>
+				</div>
+				<div class="modules" id="modules_container"></div>
+			</div>
+			<div class="control">
+				<button id="compile">Compile</button>
+			</div>
+		</div>
+		<!-- Loading Small Container -->
+		<div class="loader">
+			<span class="progress_2"></span>
+		</div>
+		<!-- Success Download Page -->
+		<div class="download">
+			<span data-size="10KB">abc.emin.js</span>
+			<button class="download_btn">Download</button>
+			<span class="goback">Go Back</span>
+		</div>
+
+		<!-- Close Button -->
+		<div class="close"></div>
+	</div>
+
+	<div class="emin_popup">
+		<button id="s_min">Show Minifier</button>
+	</div>
+
+	<script type="text/javascript" src="popup.js"></script>
+</body>
+</html>

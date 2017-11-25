@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Minifier-Extended</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+		body { background: #2b303b; color: #EEE; font-family: arial; }
+		iframe {
+			border: 0;
+			background: transparent;
+			position: absolute;
+			width: 80vw;
+			height: 60vh;
+
+			top: calc(50% - 20vh);
+			left: calc(50% - 40vw);
+		}
+
+		.url-container{
+			width: 100%;
+			vertical-align: middle;
+			white-space: nowrap;
+			position: relative;
+		}
+		.url-container input#search{
+			width: 100%;
+			height: 50px;
+			background: rgba(0, 0, 0, .3);
+			border: none;
+			font-size: 10pt;
+			float: left;
+			color: #eee;
+			padding-left: 45px;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			outline: none;
+		}
+
+		.url-container input#search::-webkit-input-placeholder {
+			color: #65737e;
+		}
+			
+		.url-container input#search:-moz-placeholder { /* Firefox 18- */
+			color: #65737e;  
+		}
+			
+		.url-container input#search::-moz-placeholder {  /* Firefox 19+ */
+			color: #65737e;  
+		}
+			
+		.url-container input#search:-ms-input-placeholder {  
+			color: #65737e;  
+		}
+
+		.url-container .icon{
+			position: absolute;
+			top: 50%;
+			margin-left: 17px;
+			margin-top: 17px;
+			z-index: 1;
+			color: #4f5b66;
+		}
+
+		.url-container .icon .fa {
+			width: 20px;
+			height: 20px;
+			display: block;
+		}
+
+		.url-container .icon .fa.fa-search {
+			background: url('https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_search_white_24px.svg') no-repeat center;
+			background-size: 20px; 
+		}
+
+		.container {
+			width: 80vw;
+			margin: 0 auto;
+		}
+
+		#loader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 99;
+			background: rgba(0, 0, 0, .9);
+			color: #fff;
+			text-align: center;
+			font-size: 32px;
+			display: none;
+		}
+
+		#loader span {
+			position: absolute;
+			width: 100vw;
+			height: 100px;
+			top: calc(50% - 50px);
+			left: 0;
+		}
+
+		#loader.show {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<h1>Extended Minifier</h1>
+		<p>Manipulate libraries and extract minified methods that you need!</p>
+		<div class="url-container">
+			<span class="icon"><i class="fa fa-search"></i></span>
+			<input type="search" id="search" placeholder="Enter url of the javascript library..." />
+		</div>
+	</div>
+
+	<div id="loader">
+		<span>Loading...</span>
+	</div>
+
+	<script type="text/javascript" src="Minifier-Extended.js"></script>
+	<script>
+		var eObject = null;
+		document.getElementById("search")
+			.addEventListener("keydown", (e) => {
+				if(e.keyCode == 13 || e.which == 13) {
+					let url = document.getElementById("search").value.trim();
+					if(url.length == 0) return;
+
+					// enter pressed
+					let iframes = document.getElementsByTagName("iframe");
+					if(iframes && iframes.length > 0) {
+						for(let i = iframes.length-1; i >= 0; i--)
+							iframes[i].remove();
+					}
+
+					showLoading();
+
+					eObject = new emin(url, function() {
+						eObject.showExtended();
+						hideLoading();
+					});	
+				}
+			});
+
+		var showLoading = function() {
+			document.getElementById("loader").classList.add("show");
+		};
+
+		var hideLoading = function() {
+			document.getElementById("loader").classList.remove("show");
+		};
+	</script>
+</body>
+</html>

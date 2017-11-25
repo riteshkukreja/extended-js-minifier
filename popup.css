@@ -1,0 +1,322 @@
+* {margin: 0;}
+body {
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+div.container {
+	width: 90vw;
+	height: 90vh;
+	background: #FFF;
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, .4);
+	position: absolute;
+	top: 5vh;
+	left: 5vw;
+	transition: all 200ms ease;
+	display: none;
+	font-size: 0;
+}
+
+div.container[data-loader="1"] {
+	height: 80px;
+	width: 500px;
+	box-sizing: border-box;
+	top: calc(50% - 50px);
+	left: calc(50% - 250px);
+	box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, .5);
+}
+
+div.container[data-loader="2"] {
+	height: 0px;
+	top: calc(50%);
+}
+
+div.container div.sidebar {
+	width: 30%;
+	height: 100%;
+	background: #444;
+	display: inline-block;
+}
+
+div.container div.main {
+	width: 69%;
+	height: 100%;
+	display: inline-block;
+	position: relative;
+	font-size: 0;
+}
+
+div.container div.main div.content {
+	width: 100%;
+	height: 89%;
+	position: absolute;
+	z-index: 10;
+	top: 0;
+}
+
+div.container div.main div.control {
+	width: 100%;
+	height: 20%;
+	position: absolute;
+	bottom: 0;
+}
+
+div.control button {
+	width: 120px;
+	height: 40px;
+	border-radius: 25px;
+	border:3px solid #099;
+	background: transparent;
+	color: #099;
+	font-weight: bold;
+	padding: 10px 15px;
+	float: right;
+	margin-right: 20px;
+	margin-top: 20px;
+	outline: none;
+	position: absolute;
+	right: 20px;
+	top: calc(50% - 20px);
+	transition: all 200ms ease;
+}
+
+div.control button:hover {
+	cursor: pointer;
+	background: #099;
+	color: #FFF;
+	box-shadow: 0px 5px 15px rgba(0, 90, 90, .4);
+}
+
+div.main div.search {
+	width: 100%;
+	height: 50px;
+	position: relative;
+}
+
+div.search input[type=text] {
+	width: 90%;
+	height: 30px;
+	padding: 10px 5px;
+	padding-left: 30px;
+	border: 1px solid #CCC;
+	color: #444;
+	outline: none;
+	box-sizing: border-box;
+	position: absolute;
+	top: calc(50% - 15px);
+	left: 5%;
+}
+
+div.search input[type=text]:focus {
+	box-shadow: 0px 0px 1px 1px rgba(0, 90, 90, .2) inset;
+}
+div.search span.icon {
+	display: block;
+	width: 30px;
+	height: 30px;
+	box-sizing: border-box;
+	padding: 10px;
+	z-index: 10;
+	position: absolute;
+	top: calc(50% - 15px);
+	left: 5%;
+}
+
+div.search span.icon:after {
+	content: '';
+	display: block;
+	width: 30px;
+	height: 30px;
+	padding: 10px;
+	box-sizing: border-box;
+	z-index: 10;
+	position: absolute;
+	top: calc(50% - 15px);
+	right: 0%;
+	background: url('https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_search_black_24px.svg') no-repeat center;
+}
+
+div.content div.modules {
+	width: 100%;
+	height: calc(100% - 60px);
+	overflow-y:auto;
+}
+
+div.modules div.module {
+	width: 90%;
+	height: auto;
+	box-sizing: border-box;
+	padding: 15px 10px;
+	margin-right: 5%;
+	margin-left: 5%;
+	background: rgba(0, 0, 0, .05);
+	position: relative;
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+
+div.modules div.module h2 {
+	font-family: arial;
+	font-size: 24px;
+}
+
+div.modules div.module span {
+	font-size: 14px;
+	color: #FFF;
+	background: #066;
+	padding: 2px 5px;
+	font-family: arial;
+	margin-top: -5px;
+}
+
+div.modules div.module p {
+	font-family: arial;
+	font-size: 14px;
+	color: #444;
+}
+
+div.modules div.module:hover {
+	box-shadow: 0px 0px 1px 1px rgba(0,0, 0, 0.1) inset;
+}
+
+div.modules div.module.selected:after {
+	content: '';
+	display: block;
+	width: 15px;
+	height: 100%;
+	background: #099;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	top: 0;
+}
+
+div.container div.loader, div.container div.download {
+	display: none;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	font-size: 24px;
+	color: #444;
+}
+
+div.container div.loader span.progress_2 {
+	display: block;
+	width: 0%;
+	height: 100%;
+	background: #099;
+	transition: all 200ms ease;
+}
+
+div.download {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+div.download button.download_btn {
+	background: rgba(0, 0, 0, .3);
+	color: #FFF;
+	width: 120px;
+	height: 40px;
+	border-radius: 25px;
+	font-weight: bold;
+	padding: 10px 15px;
+	outline: none;
+	transition: all 200ms ease;
+	float: right;
+	border: 0;
+	cursor: pointer;
+}
+
+div.download button.download_btn:hover {
+	background: rgba(0, 0, 0, .5);
+}
+
+div.container div.download {
+	box-sizing: border-box;
+	padding: 20px 15px;
+	background: #099;
+}
+
+div.container div.download span {
+	text-decoration: none;
+	color: #FFF;
+	font-weight: bold;
+	margin-left: 20px;
+}
+
+div.container div.download span.goback {
+	font-size: 14px;
+	color: #FFF;
+	opacity: 0.7;
+	position: absolute;
+	bottom: 10px;
+	left: 15px;
+	cursor: pointer;
+}
+
+div.container div.close {
+	position: absolute;
+	right: -20px;
+	top: -20px;
+	width: 40px;
+	height: 40px;
+	background: #099;
+	border-radius: 100%;
+	box-shadow: 0px 5px 15px rgba(0, 90, 90,.4);
+	cursor: pointer;
+}
+
+div.container div.close::after {
+	content: 'X';
+	display: block;
+	width: 40px;
+	height: 40px;
+	box-sizing: border-box;
+	padding: 5px;
+	font-weight: 800;
+	color: rgba(220, 220, 220, .9);
+	font-family: arial;
+	font-size: 24px;
+	position: absolute;
+	top: calc(50% - 22px);
+	left: calc(50% - 14px);
+}
+
+/* Popup Button */
+div.emin_popup {
+	position: absolute;
+	width: 200px;
+	height: 60px;
+	top: calc(50% - 30px);
+	left: calc(50% - 100px);
+}
+
+div.emin_popup button {
+	width: 180px;
+	height: 40px;
+	border-radius: 25px;
+	border:3px solid #099;
+	background: transparent;
+	color: #099;
+	font-weight: bold;
+	padding: 10px 15px;
+	float: right;
+	margin-right: 20px;
+	margin-top: 20px;
+	outline: none;
+	position: absolute;
+	top: calc(50% - 20px);
+	left: calc(50% - 90px);
+	transition: all 200ms ease;
+}
+
+div.emin_popup button:hover {
+	cursor: pointer;
+	background: #099;
+	color: #FFF;
+	box-shadow: 0px 5px 15px rgba(0, 90, 90, .4);
+}
